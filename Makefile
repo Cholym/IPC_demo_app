@@ -1,12 +1,13 @@
 CC=gcc
 CFLAGS=-Wall -Werror -Wextra
 
-run: request.o
-	@$(CC) $(CFLAGS) request.c -n request
-	@rm -f request.o
+all: reader writer
 
-clang:
-	@clang-format -i request.c
+reader: reader.c common.h
+	@$(CC) $(CFLAGS) -o reader reader.c
+
+writer: writer.c common.h
+	@$(CC) $(CFLAGS) -o writer writer.c
 
 clean:
-	@rm -f request
+	@rm -f reader writer	/tmp/files.txt /tmp/dirs.txt
